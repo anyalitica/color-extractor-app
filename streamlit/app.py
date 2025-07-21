@@ -778,101 +778,146 @@ if 'image_info' not in st.session_state:
 
 # Enhanced expandable help section with all tips combined
 with st.expander("ℹ️ Complete Guide: Algorithms, Tips & Color Theory", expanded=False):
-    st.markdown("""
-    ### 🧠 Available Algorithms
+    st.markdown("### 🧠 Available Algorithms")
 
-    **K-means (Improved)** - Best overall performance
-    - Uses smart pixel sampling and frequency-based sorting
-    - Excellent for photographs and complex images
-    - Fast processing with high accuracy
+    # Create 3 columns for algorithms
+    algo_col1, algo_col2, algo_col3 = st.columns(3)
 
-    **Color Histogram** - Best for graphics and illustrations
-    - Analyzes color frequency distribution in 3D space
-    - Great for images with distinct color regions
-    - Very fast processing
+    with algo_col1:
+        st.markdown("""
+        **🧠 K-means (Improved)**
+        - Smart pixel sampling
+        - Frequency-based sorting
+        - Best for photographs
 
-    **Median Cut** - Classic algorithm used by many image editors
-    - Recursively divides color space at median points
-    - Produces well-balanced color palettes
-    - Good for all image types
+        **📊 Color Histogram**
+        - 3D color frequency analysis
+        - Great for graphics
+        - Very fast processing
+        """)
 
-    **Hierarchical Clustering** - Best for color relationships
-    - Creates tree-like color groupings
-    - Excellent for analyzing color harmony
-    - Slower but very accurate
+    with algo_col2:
+        st.markdown("""
+        **✂️ Median Cut**
+        - Divides color space recursively
+        - Well-balanced palettes
+        - Classic algorithm
 
-    **Dominant Sampling** - Best for quick previews
-    - Samples key regions of the image
-    - Very fast processing
-    - Good for real-time applications
+        **🌳 Hierarchical Clustering**
+        - Tree-like color groupings
+        - Excellent for color harmony
+        - More accurate results
+        """)
 
-    ### 💡 Tips for Best Results
-    - **High contrast images** produce more distinct palettes
-    - **Well-lit photos** give accurate color representation
-    - **Different algorithms** work better for different image types
-    - **Lower similarity thresholds** preserve more color variations
-    - **Higher similarity thresholds** create more cohesive palettes
+    with algo_col3:
+        st.markdown("""
+        **🎯 Dominant Sampling**
+        - Samples key image regions
+        - Very fast processing
+        - Good for previews
 
-    ### 🎯 Algorithm Recommendations by Image Type
-    - **Photographs:** K-means (Improved) or Hierarchical
-    - **Logos/Graphics:** Histogram or Median Cut
-    - **Artwork/Paintings:** Median Cut or K-means (Improved)
-    - **Quick Analysis:** Dominant Sampling or Histogram
+        **⚡ Quantization**
+        - Reduces color precision
+        - Finds dominant colors
+        - Memory efficient
+        """)
 
-    ### 🔥 Quick Performance Tips
-    - **Photographs:** Use K-means Improved
-    - **Graphics/Logos:** Try Histogram or Median Cut
-    - **Artistic Images:** Hierarchical works great
-    - **Quick Preview:** Use Dominant Sampling
-    - **Need exact colors:** Set similarity to 0
-    - **Want cohesive palette:** Increase similarity threshold
+    st.markdown("---")
+    st.markdown("### 💡 Tips & Recommendations")
 
-    ### ⚡ Technical Performance Tips
-    - Large images are auto-resized for speed
-    - Sampling reduces processing time
-    - Try different algorithms for best results
-    - Lower similarity = more colors
+    # Create 2 columns for tips
+    tip_col1, tip_col2 = st.columns(2)
 
-    ### 🎨 Color Theory Basics
-    - **Complementary:** Colors opposite on color wheel - create high contrast
-    - **Analogous:** Colors next to each other - create harmony
-    - **Triadic:** Three evenly spaced colors - balanced and vibrant
-    - **Monochromatic:** Shades of single hue - elegant and cohesive
-    - **Warm Colors:** Reds, oranges, yellows - energetic and bold
-    - **Cool Colors:** Blues, greens, purples - calming and professional
+    with tip_col1:
+        st.markdown("""
+        **🎯 Algorithm by Image Type:**
+        - **Photographs:** K-means (Improved) or Hierarchical
+        - **Logos/Graphics:** Histogram or Median Cut
+        - **Artwork/Paintings:** Median Cut or K-means
+        - **Quick Analysis:** Dominant Sampling
 
-    ### 🎯 Use Cases & Applications
-    - **Web Design:** Create CSS color variables from design mockups
-    - **Brand Identity:** Extract official colors from logos and marketing materials
-    - **Interior Design:** Match paint colors to inspiration photos
-    - **Art Analysis:** Study color relationships in paintings and artwork
-    - **Fashion:** Extract color palettes from clothing and accessories
-    - **Photography:** Analyze dominant tones for editing decisions
+        **🔥 Performance Tips:**
+        - **Need exact colors:** Set similarity to 0
+        - **Want cohesive palette:** Increase similarity
+        - **Large images:** Use sampling algorithms
+        - **Quick preview:** Try Dominant Sampling
+        """)
 
-    ### 🔧 Advanced Settings Guide
+    with tip_col2:
+        st.markdown("""
+        **💡 Best Results Tips:**
+        - **High contrast images** → more distinct palettes
+        - **Well-lit photos** → accurate color representation
+        - **Lower similarity** → preserve color variations
+        - **Higher similarity** → create cohesive palettes
 
-    **Similarity Filtering:**
-    - 0: No filtering - keep all extracted colors
-    - 1-20: Low filtering - remove very similar colors
-    - 20-50: Medium filtering - remove moderately similar colors
-    - 50+: High filtering - keep only very distinct colors
+        **⚡ Technical Tips:**
+        - Large images auto-resize for speed
+        - Sampling reduces processing time
+        - Try different algorithms for best results
+        - Lower similarity = more colors
+        """)
 
-    **Sampling (K-means Improved):**
-    - 0.05-0.1: Fast processing, good for large images
-    - 0.1-0.3: Balanced speed and accuracy
-    - 0.3-0.5: Slower but more accurate results
+    st.markdown("---")
+    st.markdown("### 🎨 Color Theory Basics")
 
-    **Histogram Resolution:**
-    - 4-8 bins: Broad color groupings, fewer distinct colors
-    - 8-12 bins: Balanced detail and simplicity
-    - 12-16 bins: High detail, more nuanced colors
+    # Create 2 columns for color theory
+    theory_col1, theory_col2 = st.columns(2)
 
-    ### 📁 Export Formats
-    - **JSON:** Complete extraction data with metadata
-    - **CSS:** Ready-to-use CSS custom properties
-    - **TXT:** Simple text format for any application
-    - **XML:** Structured format with color names and values
-    """)
+    with theory_col1:
+        st.markdown("""
+        - **Complementary:** Opposite colors - high contrast
+        - **Analogous:** Adjacent colors - harmony
+        - **Triadic:** Three evenly spaced - balanced
+        - **Monochromatic:** Single hue shades - elegant
+        - **Warm Colors:** Reds, oranges, yellows - energetic
+        - **Cool Colors:** Blues, greens, purples - calming
+        """)
+
+    # with theory_col2:
+    #     st.markdown("""
+    #     **🎯 Use Cases & Applications:**
+    #     - **Web Design:** CSS color variables from mockups
+    #     - **Brand Identity:** Extract official brand colors
+    #     - **Interior Design:** Match paint to inspiration photos
+    #     - **Art Analysis:** Study color relationships
+    #     - **Fashion:** Extract clothing color palettes
+    #     - **Photography:** Analyze dominant tones for editing
+    #     """)
+
+    st.markdown("---")
+    st.markdown("### 🔧 Advanced Settings Guide")
+
+    # Create 2 columns for advanced settings
+    settings_col1, settings_col2 = st.columns(2)
+
+    with settings_col1:
+        st.markdown("""
+        **Similarity Filtering:**
+        - **0:** No filtering - keep all colors
+        - **1-20:** Low filtering - remove very similar
+        - **20-50:** Medium filtering - moderately similar
+        - **50+:** High filtering - only distinct colors
+
+        **Sampling (K-means Improved):**
+        - **0.05-0.1:** Fast processing, large images
+        - **0.1-0.3:** Balanced speed and accuracy
+        - **0.3-0.5:** Slower but more accurate
+        """)
+
+    with settings_col2:
+        st.markdown("""
+        **Histogram Resolution:**
+        - **4-8 bins:** Broad groupings, fewer colors
+        - **8-12 bins:** Balanced detail and simplicity
+        - **12-16 bins:** High detail, nuanced colors
+
+        **📁 Export Formats:**
+        - **JSON:** Complete extraction data + metadata
+        - **CSS:** Ready-to-use CSS custom properties
+        - **TXT:** Simple text format for any application
+        - **XML:** Structured format with color names
+        """)
 
 # Create columns for layout
 col1, col2 = st.columns([2, 1])
@@ -1152,42 +1197,6 @@ st.markdown("""
     </small></p>
 </div>
 """, unsafe_allow_html=True)
-
-# Additional tips section for users without extracted colors
-if 'extracted_colors' not in st.session_state or st.session_state.extracted_colors is None:
-    st.markdown("---")
-    st.markdown("### 💡 Getting Started Tips")
-
-    col_tip1, col_tip2, col_tip3 = st.columns(3)
-
-    with col_tip1:
-        st.markdown("""
-        **🎯 Best Image Types:**
-        - High-resolution photos
-        - Good lighting and contrast
-        - Multiple distinct colors
-        - Clean, uncompressed images
-        """)
-
-    with col_tip2:
-        st.markdown("""
-        **⚙️ Algorithm Guide:**
-        - **Photos**: K-means Improved
-        - **Graphics**: Color Histogram
-        - **Art**: Median Cut
-        - **Quick**: Dominant Sampling
-        """)
-
-    with col_tip3:
-        st.markdown("""
-        **📊 Export Options:**
-        - **JSON**: Complete data
-        - **CSS**: Web development
-        - **TXT**: Simple text
-        - **XML**: Named colors
-        """)
-
-
 
 # Version and credits
 st.markdown("---")
