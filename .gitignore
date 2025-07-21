@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 
 tkinter_app/
+color_extractor_env/
