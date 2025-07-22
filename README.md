@@ -4,90 +4,171 @@
 
 ## Overview
 
-This Streamlit app helps designers, developers, and creatives easily extract dominant color palettes from any image. Using advanced machine learning algorithms like K-means clustering and color quantization, the app analyzes uploaded images to identify the most prominent colors and presents them in a clean, usable format.
+This advanced Streamlit app helps designers, developers, and creatives easily extract dominant color palettes from any image using multiple sophisticated algorithms. Choose from 7 different extraction methods including K-means clustering, color histograms, median cut, and hierarchical clustering to find the perfect color palette for your project.
 
-![App Screenshot](https://github.com/yourusername/color-extractor-app/blob/main/assets/app_screenshot.png)
+![App Screenshot](https://github.com/anyalitica/color-extractor-app/blob/main/assets/app_screenshot.png)
 
-## Features
+## ✨ Key Features
 
-- **Multiple Extraction Methods**: Choose between K-means clustering for better color grouping or quantization for faster processing
-- **Smart Hue Filtering**: Remove similar colors based on configurable hue difference thresholds
-- **Color Harmony Analysis**: Get insights about warm/cool color balance and overall palette brightness
-- **Multiple Output Formats**: Export colors in HEX or RGB formats
-- **Professional Color Swatches**: View colors with automatic contrast-optimized text labels
-- **Export Options**: Download palettes as JSON for data use or CSS for web development
-- **Performance Optimized**: Automatic image resizing and caching for fast processing
-- **Sample Images**: Try the app instantly with built-in sample images
+### 🧠 Multiple Extraction Algorithms
+- **K-means (Improved)** - Smart pixel sampling with frequency-based sorting
+- **Color Histogram** - 3D color frequency analysis for graphics
+- **Median Cut** - Classic algorithm that divides color space recursively
+- **Hierarchical Clustering** - Tree-like color groupings for harmony analysis
+- **Dominant Sampling** - Fast sampling of key image regions
+- **Quantization (Improved)** - Memory-efficient color precision reduction
+- **K-means (Basic)** - Standard clustering approach
 
-## Why Extract Color Palettes?
+### 🎨 Advanced Color Processing
+- **Perceptual Color Filtering** - LAB color space similarity filtering
+- **Smart Color Naming** - Automatic descriptive color names
+- **Color Harmony Analysis** - Warm/cool balance and brightness insights
+- **Automatic Contrast Optimization** - Perfect text colors on color swatches
+
+### 📁 Multiple Export Formats
+- **JSON** - Complete extraction data with metadata
+- **CSS** - Ready-to-use CSS custom properties
+- **TXT** - Simple text format with color names and values
+- **XML** - Structured palette format with attributes
+
+### 🔧 Performance Optimized
+- **Automatic Image Resizing** - Smart resizing for faster processing
+- **Intelligent Sampling** - Configurable pixel sampling for large images
+- **Streamlit Caching** - Fast repeated operations
+- **Progress Indicators** - Real-time processing feedback
+
+## 🎯 Why Extract Color Palettes?
 
 Color palette extraction has numerous practical applications:
-- **Web Design**: Create cohesive color schemes for websites and applications
-- **Brand Development**: Extract brand colors from logos and marketing materials
-- **Art & Design**: Analyze color relationships in artwork and photography
-- **Interior Design**: Match colors from inspiration images
-- **Data Visualization**: Generate color schemes for charts and graphs
-- **Fashion**: Coordinate colors from fabric swatches or inspiration photos
 
-## Getting Started
+- **🌐 Web Design** - Create cohesive color schemes for websites and applications
+- **🏢 Brand Development** - Extract official colors from logos and marketing materials
+- **🎨 Art & Design** - Analyze color relationships in artwork and photography
+- **🏠 Interior Design** - Match paint colors to inspiration photos
+- **📊 Data Visualization** - Generate color schemes for charts and graphs
+- **👗 Fashion** - Coordinate colors from fabric swatches and inspiration images
 
-1. Visit the [live app](https://color-extractor-app.streamlit.app/)
-2. Upload an image (PNG, JPG, JPEG, WEBP) or try the sample gradient
-3. Adjust extraction parameters:
-   - **Number of colors**: 2-10 colors in your palette
-   - **Extraction method**: K-means or quantization
-   - **Hue threshold**: Filter out similar colors
-   - **Output format**: HEX or RGB values
-4. Click "Extract Colors" to generate your palette
-5. Copy color values or download as JSON/CSS files
+## 🚀 Getting Started
 
-## Extraction Methods
+1. **Visit the App** - Go to the [live app](https://color-extractor-app.streamlit.app/)
+2. **Upload or Sample** - Upload an image (PNG, JPG, JPEG, WEBP, BMP, TIFF) or try the sample gradient
+3. **Configure Settings**:
+   - **Number of colors** (2-15) - Size of your palette
+   - **Extraction algorithm** - Choose from 7 different methods
+   - **Similarity filtering** (0-100) - Remove similar colors
+   - **Output format** - HEX or RGB values
+   - **Algorithm-specific parameters** - Fine-tune for optimal results
+4. **Extract Colors** - Click the extraction button to generate your palette
+5. **Copy & Export** - Use the copy tabs or download in multiple formats
 
-### K-means Clustering
-- **Best for**: Complex images with varied colors
-- **Advantages**: Better color grouping, more representative colors
-- **Use when**: Quality is more important than speed
+## 🧠 Algorithm Guide
 
-### Color Quantization
-- **Best for**: Simple images or quick extraction
-- **Advantages**: Faster processing, good for real-time applications
-- **Use when**: Speed is important or working with simple color schemes
+### When to Use Each Algorithm
 
-## Parameters Guide
+| Algorithm | Best For | Speed | Accuracy | Use Case |
+|-----------|----------|--------|----------|----------|
+| **K-means (Improved)** | Photographs | Medium | High | Complex images, best overall |
+| **Color Histogram** | Graphics/Logos | Fast | High | Images with distinct regions |
+| **Median Cut** | All image types | Medium | High | Classic, well-balanced results |
+| **Hierarchical** | Color harmony | Slow | Very High | Artistic analysis |
+| **Dominant Sampling** | Quick previews | Very Fast | Medium | Real-time applications |
+| **Quantization** | Simple images | Fast | Medium | Memory-constrained environments |
 
-- **Number of Colors (2-10)**: More colors = more detailed palette, fewer colors = simplified scheme
-- **Hue Threshold (0-90°)**: Higher values remove more similar colors, 0 keeps all extracted colors
-- **Quantization Level (2-32)**: Only for quantization mode - higher values = more color precision
+### Algorithm-Specific Parameters
 
-## Export Formats
+#### K-means (Improved)
+- **Sample Fraction** (0.05-0.5) - Lower = faster, higher = more accurate
 
-### JSON Export
-Perfect for developers and data applications:
+#### Color Histogram
+- **Histogram Resolution** (4-16 bins) - Higher = more color precision
+
+#### Hierarchical Clustering
+- **Clustering Method** - Ward (recommended), Complete, Average, Single
+
+#### Dominant Sampling
+- **Sampling Pattern** - Grid (systematic) or Random (varied coverage)
+
+#### Quantization
+- **Quantization Level** (4-32) - Higher values preserve more color nuances
+
+## 📋 Export Formats
+
+### 🔗 Copy Color Values
+Quick access to colors in multiple formats:
+- **List Format** - One color per line for spreadsheets
+- **Comma Separated** - All colors in one line
+- **JSON Format** - Structured data for programming
+- **XML Format** - Structured palette with attributes
+
+### 📥 Download Options
+
+#### JSON Export
+Complete extraction data with metadata:
 ```json
 {
-  "colors": ["#ff5733", "#33ff57", "#3357ff"],
+  "palette_name": "Extracted_Palette_1234567890",
+  "colors": ["#FF5733", "#33FF57", "#3357FF"],
+  "color_count": 3,
   "format": "HEX",
-  "extraction_method": "kmeans",
+  "extraction_method": "kmeans_improved",
   "parameters": {
-    "n_colors": 3,
-    "hue_threshold": 30
-  }
+    "requested_colors": 3,
+    "similarity_threshold": 30,
+    "sample_fraction": 0.1
+  },
+  "extracted_at": "2024-01-15 10:30:45"
 }
 ```
 
-### CSS Export
+#### CSS Variables
 Ready-to-use CSS custom properties:
 ```css
 :root {
-  --color-1: #ff5733;
-  --color-2: #33ff57;
-  --color-3: #3357ff;
+  --color-1: #FF5733;
+  --color-2: #33FF57;
+  --color-3: #3357FF;
+  --color-1: #FF5733;
 }
+
+/* Usage examples */
+.primary { color: var(--color-1); }
+.secondary { background-color: var(--color-2); }
 ```
 
-## Local Development
+#### TXT Format
+Simple text format with color information:
+```
+Color Palette - Extracted 2024-01-15 10:30:45
+Method: K-means (Improved)
+Colors: 3
+----------------------------------------
 
-To run the app locally:
+Color 1
+  HEX: #FF5733
+  RGB: 255, 87, 51
+
+Color 2
+  HEX: #33FF57
+  RGB: 51, 255, 87
+```
+
+#### XML Palette
+Structured format with color attributes:
+```xml
+<palette>
+  <color name="Color 1" hex="#FF5733" r="255" g="87" b="51" />
+  <color name="Color 2" hex="#33FF57" r="51" g="255" b="87" />
+  <color name="Color 3" hex="#3357FF" r="51" g="87" b="255" />
+</palette>
+```
+
+## 🛠️ Local Development
+
+### Prerequisites
+- Python 3.8+
+- pip package manager
+
+### Installation
 
 ```bash
 # Clone the repository
@@ -101,93 +182,189 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Requirements
+### Requirements
+```
+streamlit
+numpy
+Pillow
+scikit-learn
+scipy
+```
 
-- Python 3.8+
-- Streamlit
-- NumPy
-- Pillow (PIL)
-- scikit-learn
-
-See `requirements.txt` for specific versions.
-
-## Technical Details
+## 🔧 Technical Details
 
 ### Image Processing
-- Automatic RGB conversion for all image formats
-- Smart resizing for large images (max 800px) to optimize performance
-- Pixel-level analysis using NumPy arrays
+- **Automatic Format Conversion** - All images converted to RGB
+- **Smart Resizing** - Large images resized to 800px max for performance
+- **Pixel Analysis** - NumPy array processing for efficiency
+- **Memory Management** - Optimized for large image handling
 
 ### Color Analysis
-- HSV color space conversion for accurate hue filtering
-- Brightness analysis for color harmony insights
-- Automatic text color selection for optimal contrast on color swatches
+- **LAB Color Space** - Perceptual color distance calculations
+- **HSV Analysis** - Hue, saturation, and brightness evaluation
+- **Statistical Methods** - Frequency analysis and clustering
+- **Color Theory** - Automatic warm/cool color detection
 
 ### Performance Features
-- Streamlit caching for faster repeated operations
-- Progress indicators for better user experience
-- Error handling for unsupported files and processing issues
+- **Caching** - Streamlit cache for repeated operations
+- **Progress Tracking** - Real-time processing updates
+- **Error Handling** - Comprehensive error management
+- **Responsive UI** - Adaptive layout for different screen sizes
 
-## Use Cases
+## 📚 Complete User Guide
+
+### 💡 Tips for Best Results
+
+#### Image Selection
+- **High contrast images** produce more distinct palettes
+- **Well-lit photos** give accurate color representation
+- **Multiple distinct colors** work better than monochrome images
+- **Clean, uncompressed images** provide better accuracy
+
+#### Algorithm Selection
+- **Photographs** → K-means (Improved) or Hierarchical
+- **Logos/Graphics** → Histogram or Median Cut
+- **Artwork/Paintings** → Median Cut or K-means (Improved)
+- **Quick Analysis** → Dominant Sampling or Histogram
+
+#### Parameter Tuning
+- **Lower similarity thresholds** preserve more color variations
+- **Higher similarity thresholds** create more cohesive palettes
+- **More colors** = detailed palette, fewer colors = simplified scheme
+- **Higher sampling** = more accuracy, lower sampling = faster processing
+
+### 🎨 Color Theory Integration
+
+#### Color Relationships
+- **Complementary** - Colors opposite on color wheel (high contrast)
+- **Analogous** - Adjacent colors (harmonious)
+- **Triadic** - Three evenly spaced colors (balanced)
+- **Monochromatic** - Shades of single hue (elegant)
+
+#### Color Psychology
+- **Warm Colors** (reds, oranges, yellows) - Energetic and bold
+- **Cool Colors** (blues, greens, purples) - Calming and professional
+- **Neutral Colors** (grays, browns, beiges) - Balanced and sophisticated
+
+### 🚀 Advanced Settings Guide
+
+#### Similarity Filtering
+- **0** - No filtering, keep all extracted colors
+- **1-20** - Low filtering, remove very similar colors
+- **20-50** - Medium filtering, remove moderately similar colors
+- **50+** - High filtering, keep only very distinct colors
+
+#### Processing Optimization
+- **Large images** - Automatically resized for speed
+- **Sampling** - Reduces processing time while maintaining accuracy
+- **Algorithm choice** - Different methods excel with different image types
+- **Memory usage** - Optimized for both small and large images
+
+## 🎯 Use Cases & Applications
 
 ### For Designers
-- Extract color schemes from mood boards and inspiration images
-- Create brand guideline color palettes
-- Analyze competitor color schemes
+- **Brand Identity** - Extract official colors from logos and materials
+- **Mood Boards** - Create cohesive color schemes from inspiration images
+- **Color Analysis** - Study competitor color schemes and trends
+- **Palette Creation** - Generate harmonious color combinations
 
 ### For Developers
-- Generate CSS color variables from design mockups
-- Create programmatic color schemes for applications
-- Extract colors for data visualization themes
+- **CSS Generation** - Automatic CSS custom properties from mockups
+- **Theme Creation** - Dynamic color schemes for applications
+- **Data Visualization** - Color palettes for charts and graphs
+- **Brand Compliance** - Ensure consistent brand color usage
 
-### For Artists
-- Analyze color relationships in reference images
-- Study color harmony in famous artworks
-- Plan color schemes for new projects
+### For Artists & Creatives
+- **Reference Analysis** - Study color relationships in master artworks
+- **Digital Art** - Extract color inspiration from photographs
+- **Fashion Design** - Coordinate colors from fabric and inspiration
+- **Photography** - Analyze dominant tones for post-processing
 
-## Tips for Best Results
+## 🔍 Troubleshooting
 
-- **Use high-contrast images** for more distinct color extraction
-- **Upload high-quality images** for better color accuracy
-- **Adjust hue threshold** to remove muddy or similar colors
-- **Try different extraction methods** - K-means for complex images, quantization for simple ones
-- **Consider image content** - photos work better than graphics with gradients
+### Common Issues & Solutions
 
-## Troubleshooting
+**Colors appear muddy or too similar?**
+- Increase the similarity threshold to filter similar colors
+- Try K-means (Improved) for better color separation
+- Use images with higher contrast
 
-**Colors look muddy or similar?**
-- Increase the hue threshold to filter similar colors
-- Try the K-means method for better clustering
+**Not extracting enough distinct colors?**
+- Decrease the similarity threshold
+- Use images with more color variety
+- Try Hierarchical clustering for complex color relationships
 
-**Not enough colors extracted?**
-- Decrease the hue threshold
-- Use an image with more color variety
-- Increase the quantization level (if using quantization mode)
+**Processing taking too long?**
+- App automatically optimizes large images
+- Try Dominant Sampling for faster results
+- Use smaller image files when possible
 
-**App running slowly?**
-- The app automatically resizes large images, but very high-resolution images may still take time
-- Try using a smaller image file
+**Colors don't match expectations?**
+- Ensure image is well-lit and high quality
+- Try different algorithms - each excels with different image types
+- Adjust algorithm-specific parameters for fine-tuning
 
-## Contributions
+### Performance Tips
+- **Optimal image size** - 400-1200px width for best balance of quality/speed
+- **File formats** - PNG and JPG work best
+- **Internet connection** - Faster uploads improve experience
+- **Browser compatibility** - Modern browsers recommended
 
-Contributions are welcome! Please submit any issues, suggestions, or improvements on the [GitHub issues page](https://github.com/anyalitica/color-extractor-app/issues).
+## 🤝 Contributing
 
-### Contributing Guidelines
-- Fork the repository and create a feature branch
-- Test your changes thoroughly
-- Update documentation as needed
-- Submit a pull request with a clear description
+Contributions are welcome! Here's how to get started:
 
-## License
+### Development Setup
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Test thoroughly
+5. Commit changes (`git commit -m 'Add amazing feature'`)
+6. Push to branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+### Contribution Guidelines
+- **Code Quality** - Follow Python PEP 8 style guidelines
+- **Testing** - Test with various image types and parameters
+- **Documentation** - Update README and code comments
+- **Performance** - Ensure changes don't degrade performance
 
-## Acknowledgments
+### Areas for Contribution
+- **New Algorithms** - Additional color extraction methods
+- **Export Formats** - Support for more output formats
+- **UI Improvements** - Enhanced user experience features
+- **Performance** - Optimization and speed improvements
 
-- Built with [Streamlit](https://streamlit.io/) for the web interface
-- Uses [scikit-learn](https://scikit-learn.org/) for K-means clustering
-- Color processing powered by [Pillow](https://pillow.readthedocs.io/)
+## 📄 License
 
-## Credits
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Designed by: Anya Prosvetova, [anyalitica.dev](https://anyalitica.dev)
+## 🙏 Acknowledgments
+
+### Technologies
+- **[Streamlit](https://streamlit.io/)** - Web interface framework
+- **[scikit-learn](https://scikit-learn.org/)** - Machine learning algorithms
+- **[Pillow](https://pillow.readthedocs.io/)** - Image processing
+- **[NumPy](https://numpy.org/)** - Numerical computing
+- **[SciPy](https://scipy.org/)** - Scientific computing
+
+### Inspiration
+- Color theory principles from design and art communities
+- Feedback from designers, developers, and creative professionals
+- Open source community contributions and suggestions
+
+## 📞 Contact & Support
+
+**Created by:** Anya Prosvetova  
+**Website:** [anyalitica.dev](https://anyalitica.dev)  
+**GitHub:** [@anyalitica](https://github.com/anyalitica)
+
+### Support
+- **Issues** - [GitHub Issues](https://github.com/anyalitica/color-extractor-app/issues)
+- **Discussions** - [GitHub Discussions](https://github.com/anyalitica/color-extractor-app/discussions)
+- **Email** - For direct support and collaboration
+
+---
+
+⭐ **Star this repository** if you find it useful!  
+🔗 **Share with others** who might benefit from color palette extraction!
