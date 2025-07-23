@@ -12,7 +12,7 @@ import scipy.cluster.hierarchy as sch
 
 # Configure page
 st.set_page_config(
-    page_title="Color Palette Extractor",
+    page_title="Colour Palette Extractor",
     page_icon="🎨",
     layout="wide"
 )
@@ -85,13 +85,13 @@ def rgb_to_hex(rgb):
     return '#{:02x}{:02x}{:02x}'.format(int(rgb[0]), int(rgb[1]), int(rgb[2]))
 
 def resize_image_for_processing(image, max_size=800):
-    """Resize large images for faster processing"""
+    """Resise large images for faster processing"""
     if max(image.size) > max_size:
         image.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
     return image
 
 def rgb_to_lab(rgb):
-    """Convert RGB to LAB color space for better perceptual distance"""
+    """Convert RGB to LAB colour space for better perceptual distance"""
     rgb = np.array(rgb).reshape(-1, 3) / 255.0
 
     # Convert RGB to XYZ
@@ -129,7 +129,7 @@ def calculate_color_distance(color1, color2, method='lab'):
         return np.sqrt(np.sum((np.array(color1) - np.array(color2)) ** 2))
 
 def filter_similar_colors_improved(colors, min_distance=30, method='lab'):
-    """Improved color filtering using perceptual distance"""
+    """Improved colour filtering using perceptual distance"""
     if len(colors) <= 1:
         return colors
 
@@ -149,7 +149,7 @@ def filter_similar_colors_improved(colors, min_distance=30, method='lab'):
     return np.array(filtered_colors)
 
 def get_color_name(rgb):
-    """Generate a descriptive name for a color based on its RGB values"""
+    """Generate a descriptive name for a colour based on its RGB values"""
     r, g, b = rgb
 
     # Calculate hue, saturation, and lightness
@@ -240,7 +240,7 @@ def extract_colors_kmeans_improved(image, n_colors, sample_fraction=0.1):
     return np.array([pair[0] for pair in color_freq_pairs]).astype(int)
 
 def extract_colors_histogram(image, n_colors, bins_per_channel=8):
-    """Extract colors using 3D color histogram"""
+    """Extract colors using 3D colour histogram"""
     img_array = np.array(image)
 
     # Create 3D histogram
@@ -387,7 +387,7 @@ def extract_colors_quantization_improved(image, n_colors, quant_level=8):
 
 @st.cache_data
 def extract_colors_main(image_array, n_colors, method='kmeans_improved', min_distance=30, **kwargs):
-    """Main color extraction function with caching"""
+    """Main colour extraction function with caching"""
     # Reconstruct PIL image from array
     image = Image.fromarray(image_array)
 
@@ -434,7 +434,7 @@ def extract_colors_main(image_array, n_colors, method='kmeans_improved', min_dis
             return np.array([[0, 0, 0]])
 
 def get_color_harmony_info(colors):
-    """Provide information about color harmony"""
+    """Provide information about colour harmony"""
     if len(colors) >= 2:
         warm_colors = sum(1 for color in colors if color[0] > color[2])  # More red than blue
         cool_colors = len(colors) - warm_colors
@@ -469,7 +469,7 @@ def create_sample_image():
     return image
 
 def display_color_results():
-    """Display the extracted color results from session state"""
+    """Display the extracted colour results from session state"""
     # Check if extracted_colors exists and is not None
     if ('extracted_colors' not in st.session_state or
         st.session_state.extracted_colors is None or
@@ -502,14 +502,14 @@ def display_color_results():
         st.warning(f"⚠️ Requested {n_colors} colors, but only found {len(colors)} distinct colors with current similarity settings.")
         st.info("💡 Try reducing the similarity threshold or using a different algorithm to get more colors.")
 
-    # Color harmony analysis
+    # Colour harmony analysis
     harmony_info = get_color_harmony_info(colors)
     if harmony_info:
         st.markdown(harmony_info)
 
     # Display color swatches
     if len(colors) > 0:
-        st.header("🎨 Extracted Color Palette")
+        st.header("🎨 Extracted Colour Palette")
 
         # Create columns for color swatches
         cols = st.columns(min(len(colors), 5))  # Max 5 columns
@@ -541,14 +541,14 @@ def display_color_results():
                 # Add color info below swatch
                 st.markdown(f"""
                 <div style="text-align: center; font-size: 12px; color: #666; margin-bottom: 15px;">
-                    Color #{idx + 1}<br>
+                    Colour #{idx + 1}<br>
                     RGB: {color[0]}, {color[1]}, {color[2]}<br>
                     HEX: {hex_color}
                 </div>
                 """, unsafe_allow_html=True)
 
         # Display color values for easy copying
-        st.subheader("📋 Copy Color Values")
+        st.subheader("📋 Copy Colour Values")
 
         # Create tabs for different formats
         tab1, tab2, tab3, tab4 = st.tabs(["📝 List Format", "🔗 Comma Separated", "📊 JSON Format", "🗃️ XML Format"])
@@ -556,10 +556,10 @@ def display_color_results():
         with tab1:
             color_text = '\n'.join([str(color) for color in color_list])
             st.text_area(
-                "Color list (one per line):",
+                "Colour list (one per line):",
                 color_text,
                 height=120,
-                help="Each color on a separate line - perfect for spreadsheets"
+                help="Each colour on a separate line - perfect for spreadsheets"
             )
 
         with tab2:
@@ -586,7 +586,7 @@ def display_color_results():
             for i, color in enumerate(colors):
                 hex_color = rgb_to_hex(color)
                 r, g, b = color[0], color[1], color[2]
-                xml_lines.append(f'  <color name="Color {i+1}" hex="{hex_color}" r="{r}" g="{g}" b="{b}" />')
+                xml_lines.append(f'  <color name="Colour {i+1}" hex="{hex_color}" r="{r}" g="{g}" b="{b}" />')
             xml_lines.append('</palette>')
             xml_content = '\n'.join(xml_lines)
 
@@ -594,12 +594,12 @@ def display_color_results():
                 "XML format:",
                 xml_content,
                 height=120,
-                help="XML format with color attributes"
+                help="XML format with colour attributes"
             )
 
         # Export functionality
         st.subheader("📥 Download Palette")
-        st.markdown("Save your color palette in various formats:")
+        st.markdown("Save your colour palette in various formats:")
 
         col_export1, col_export2, col_export3, col_export4 = st.columns(4)
 
@@ -677,14 +677,14 @@ def display_color_results():
             try:
                 # Generate TXT content
                 txt_lines = []
-                txt_lines.append(f"Color Palette - Extracted {time.strftime('%Y-%m-%d %H:%M:%S')}")
+                txt_lines.append(f"Colour Palette - Extracted {time.strftime('%Y-%m-%d %H:%M:%S')}")
                 txt_lines.append(f"Method: {method.replace('_', ' ').title()}")
-                txt_lines.append(f"Colors: {len(colors)}")
+                txt_lines.append(f"Colours: {len(colors)}")
                 txt_lines.append("-" * 40)
 
                 for i, color in enumerate(colors):
                     hex_color = rgb_to_hex(color)
-                    txt_lines.append(f"Color {i+1}")
+                    txt_lines.append(f"Colour {i+1}")
                     txt_lines.append(f"  HEX: {hex_color}")
                     txt_lines.append(f"  RGB: {color[0]}, {color[1]}, {color[2]}")
                     txt_lines.append("")
@@ -696,7 +696,7 @@ def display_color_results():
                     data=txt_content,
                     file_name=f"palette_{int(time.time())}.txt",
                     mime="text/plain",
-                    help="Simple text format with color names and values",
+                    help="Simple text format with colour names and values",
                     key="download_txt"
                 )
 
@@ -705,7 +705,7 @@ def display_color_results():
 
         with col_export4:
             st.markdown("**🗃️ XML Palette**")
-            st.markdown("*Structured with color names*")
+            st.markdown("*Structured with colour names*")
             try:
                 # Generate XML content
                 xml_lines = ['<palette>']
@@ -714,7 +714,7 @@ def display_color_results():
                     hex_color = rgb_to_hex(color)
                     r, g, b = color[0], color[1], color[2]
 
-                    xml_lines.append(f'  <color name="Color {i+1}" hex="{hex_color}" r="{r}" g="{g}" b="{b}" />')
+                    xml_lines.append(f'  <color name="Colour {i+1}" hex="{hex_color}" r="{r}" g="{g}" b="{b}" />')
 
                 xml_lines.append('</palette>')
                 xml_content = '\n'.join(xml_lines)
@@ -724,7 +724,7 @@ def display_color_results():
                     data=xml_content,
                     file_name=f"palette_{int(time.time())}.xml",
                     mime="application/xml",
-                    help="XML format with descriptive color names and RGB/HEX values",
+                    help="XML format with descriptive colour names and RGB/HEX values",
                     key="download_xml"
                 )
 
@@ -751,11 +751,11 @@ def display_color_results():
                 st.rerun()
 
 # Main UI
-st.markdown('<h1 class="main-header">🎨 Color Palette Extractor</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="main-header">🎨 Colour Palette Extractor</h1>', unsafe_allow_html=True)
 
 st.markdown("""
-Extract dominant colors from any image using multiple advanced algorithms including K-means clustering,
-color histograms, median cut, and hierarchical clustering. Upload an image or try the sample to get started!
+Extract dominant colors from any image using multiple algorithms including K-means clustering,
+color histograms, median cut, and hierarchical clustering. Upload an image or try the sample to get started.
 """)
 
 # Initialize session state - COMPLETE INITIALIZATION
@@ -777,21 +777,21 @@ if 'image_info' not in st.session_state:
     st.session_state.image_info = {}
 
 # Enhanced expandable help section with all tips combined
-with st.expander("ℹ️ Complete Guide: Algorithms, Tips & Color Theory", expanded=False):
-    st.markdown("### 🧠 Available Algorithms")
+with st.expander("ℹ️ App guide: Algorithms, Tips & Colour Theory", expanded=False):
+    st.markdown("### 🧠 Available algorithms")
 
     # Create 3 columns for algorithms
     algo_col1, algo_col2, algo_col3 = st.columns(3)
 
     with algo_col1:
         st.markdown("""
-        **🧠 K-means (Improved)**
+        **🧠 K-means**
         - Smart pixel sampling
         - Frequency-based sorting
         - Best for photographs
 
-        **📊 Color Histogram**
-        - 3D color frequency analysis
+        **📊 Colour Histogram**
+        - 3D colour frequency analysis
         - Great for graphics
         - Very fast processing
         """)
@@ -799,13 +799,13 @@ with st.expander("ℹ️ Complete Guide: Algorithms, Tips & Color Theory", expan
     with algo_col2:
         st.markdown("""
         **✂️ Median Cut**
-        - Divides color space recursively
+        - Divides colour space recursively
         - Well-balanced palettes
         - Classic algorithm
 
         **🌳 Hierarchical Clustering**
-        - Tree-like color groupings
-        - Excellent for color harmony
+        - Tree-like colour groupings
+        - Excellent for colour harmony
         - More accurate results
         """)
 
@@ -817,26 +817,26 @@ with st.expander("ℹ️ Complete Guide: Algorithms, Tips & Color Theory", expan
         - Good for previews
 
         **⚡ Quantization**
-        - Reduces color precision
+        - Reduces colour precision
         - Finds dominant colors
         - Memory efficient
         """)
 
     st.markdown("---")
-    st.markdown("### 💡 Tips & Recommendations")
+    st.markdown("### 💡 Usage tips")
 
     # Create 2 columns for tips
     tip_col1, tip_col2 = st.columns(2)
 
     with tip_col1:
         st.markdown("""
-        **🎯 Algorithm by Image Type:**
+        **🎯 Algorithm by image type:**
         - **Photographs:** K-means (Improved) or Hierarchical
         - **Logos/Graphics:** Histogram or Median Cut
         - **Artwork/Paintings:** Median Cut or K-means
         - **Quick Analysis:** Dominant Sampling
 
-        **🔥 Performance Tips:**
+        **🔥 Performance tips:**
         - **Need exact colors:** Set similarity to 0
         - **Want cohesive palette:** Increase similarity
         - **Large images:** Use sampling algorithms
@@ -847,19 +847,13 @@ with st.expander("ℹ️ Complete Guide: Algorithms, Tips & Color Theory", expan
         st.markdown("""
         **💡 Best Results Tips:**
         - **High contrast images** → more distinct palettes
-        - **Well-lit photos** → accurate color representation
-        - **Lower similarity** → preserve color variations
+        - **Well-lit photos** → accurate colour representation
+        - **Lower similarity** → preserve colour variations
         - **Higher similarity** → create cohesive palettes
-
-        **⚡ Technical Tips:**
-        - Large images auto-resize for speed
-        - Sampling reduces processing time
-        - Try different algorithms for best results
-        - Lower similarity = more colors
         """)
 
     st.markdown("---")
-    st.markdown("### 🎨 Color Theory Basics")
+    st.markdown("### 🎨 Colour theory basics")
 
     # Create 2 columns for color theory
     theory_col1, theory_col2 = st.columns(2)
@@ -870,8 +864,8 @@ with st.expander("ℹ️ Complete Guide: Algorithms, Tips & Color Theory", expan
         - **Analogous:** Adjacent colors - harmony
         - **Triadic:** Three evenly spaced - balanced
         - **Monochromatic:** Single hue shades - elegant
-        - **Warm Colors:** Reds, oranges, yellows - energetic
-        - **Cool Colors:** Blues, greens, purples - calming
+        - **Warm Colours:** Reds, oranges, yellows - energetic
+        - **Cool Colours:** Blues, greens, purples - calming
         """)
 
     # with theory_col2:
@@ -886,14 +880,14 @@ with st.expander("ℹ️ Complete Guide: Algorithms, Tips & Color Theory", expan
     #     """)
 
     st.markdown("---")
-    st.markdown("### 🔧 Advanced Settings Guide")
+    st.markdown("### 🔧 Advanced settings")
 
     # Create 2 columns for advanced settings
     settings_col1, settings_col2 = st.columns(2)
 
     with settings_col1:
         st.markdown("""
-        **Similarity Filtering:**
+        **Similarity filtering:**
         - **0:** No filtering - keep all colors
         - **1-20:** Low filtering - remove very similar
         - **20-50:** Medium filtering - moderately similar
@@ -907,16 +901,16 @@ with st.expander("ℹ️ Complete Guide: Algorithms, Tips & Color Theory", expan
 
     with settings_col2:
         st.markdown("""
-        **Histogram Resolution:**
+        **Histogram resolution:**
         - **4-8 bins:** Broad groupings, fewer colors
         - **8-12 bins:** Balanced detail and simplicity
         - **12-16 bins:** High detail, nuanced colors
 
-        **📁 Export Formats:**
+        **Export formats:**
         - **JSON:** Complete extraction data + metadata
         - **CSS:** Ready-to-use CSS custom properties
         - **TXT:** Simple text format for any application
-        - **XML:** Structured format with color names
+        - **XML:** Structured format with colour names
         """)
 
 # Create columns for layout
@@ -929,7 +923,7 @@ with col2:
     n_colors = st.slider(
         "Number of colors to extract",
         2, 15, 5,
-        help="More colors create a detailed palette, fewer colors create a simplified color scheme"
+        help="More colors create a detailed palette, fewer colors create a simplified colour scheme"
     )
 
     # Enhanced method selection with descriptions
@@ -947,7 +941,7 @@ with col2:
         ],
         format_func=lambda x: {
             'kmeans_improved': '🧠 K-means (Improved)',
-            'histogram': '📊 Color Histogram',
+            'histogram': '📊 Colour Histogram',
             'median_cut': '✂️ Median Cut',
             'hierarchical': '🌳 Hierarchical Clustering',
             'dominant_sampling': '🎯 Dominant Sampling',
@@ -959,13 +953,13 @@ with col2:
 
     # Show algorithm description
     algorithm_descriptions = {
-        'kmeans_improved': "🧠 **Smart K-means** - Uses sampling and frequency sorting for optimal results",
-        'histogram': "📊 **Color Histogram** - Analyzes color frequency in 3D space",
-        'median_cut': "✂️ **Median Cut** - Classic algorithm that divides color space recursively",
-        'hierarchical': "🌳 **Hierarchical** - Creates tree-based color groupings",
-        'dominant_sampling': "🎯 **Smart Sampling** - Samples key image regions",
-        'quantization_improved': "⚡ **Quantization** - Reduces color precision to find dominant colors",
-        'kmeans_basic': "⚙️ **Basic K-means** - Standard clustering approach"
+        'kmeans_improved': "🧠 Smart K-means - Uses sampling and frequency sorting for optimal results",
+        'histogram': "📊 Colour Histogram - Analyzes colour frequency in 3D space",
+        'median_cut': "✂️ Median Cut - Classic algorithm that divides colour space recursively",
+        'hierarchical': "🌳 Hierarchical - Creates tree-based colour groupings",
+        'dominant_sampling': "🎯 Smart Sampling - Samples key image regions",
+        'quantization_improved': "⚡ Quantization - Reduces colour precision to find dominant colors",
+        'kmeans_basic': "⚙️ Basic K-means - Standard clustering approach"
     }
 
     st.markdown(f"""
@@ -986,13 +980,13 @@ with col2:
     elif method == 'histogram':
         method_params['bins_per_channel'] = st.slider(
             "Histogram resolution", 4, 16, 8,
-            help="Higher values = more color precision, lower = broader groupings"
+            help="Higher values = more colour precision, lower = broader groupings"
         )
     elif method == 'hierarchical':
         method_params['linkage_method'] = st.selectbox(
             "Clustering method",
             ['ward', 'complete', 'average', 'single'],
-            help="Ward generally produces the best results for color clustering"
+            help="Ward generally produces the best results for colour clustering"
         )
     elif method == 'dominant_sampling':
         method_params['sample_method'] = st.selectbox(
@@ -1003,14 +997,14 @@ with col2:
     elif method == 'quantization_improved':
         method_params['quant_level'] = st.slider(
             "Quantization level", 4, 32, 8,
-            help="Higher values preserve more color nuances"
+            help="Higher values preserve more colour nuances"
         )
 
     # Similarity filtering
-    st.markdown("**Color Similarity Filter**")
+    st.markdown("**Colour Similarity Filter**")
     min_distance = st.slider(
-        "Minimum color distance", 0, 100, 30,
-        help="Higher values remove more similar colors. Based on perceptual LAB color space."
+        "Minimum colour distance", 0, 100, 30,
+        help="Higher values remove more similar colors. Based on perceptual LAB colour space."
     )
 
     if min_distance == 0:
@@ -1025,7 +1019,7 @@ with col2:
     # Output format
     st.markdown("**Output Format**")
     output_format = st.selectbox(
-        "Color format for export",
+        "Colour format for export",
         ['HEX', 'RGB'],
         help="HEX for web/CSS use, RGB for design software"
     )
@@ -1050,7 +1044,7 @@ with col1:
         st.image(image, caption='🌈 Sample Test Image - Perfect for Algorithm Testing!', use_container_width=True)
         st.markdown("""
         <div class="help-box">
-        This test image contains gradients and distinct color regions.
+        This test image contains gradients and distinct colour regions.
         Perfect for comparing different extraction algorithms and settings!
         </div>
         """, unsafe_allow_html=True)
@@ -1075,7 +1069,7 @@ with col1:
             • Resolution: {image.size[0]} × {image.size[1]} pixels<br>
             • Total pixels: {total_pixels:,}<br>
             • File size: {file_size:.1f} KB<br>
-            • Color mode: {image.mode}<br>
+            • Colour mode: {image.mode}<br>
             {f'<em>⚡ Large image - processing will use smart sampling for speed</em>' if total_pixels > 100000 else '<em>✅ Good size for quick processing</em>'}
             </div>
             """, unsafe_allow_html=True)
@@ -1098,7 +1092,7 @@ with col1:
             st.stop()
     else:
         process_image = False
-        st.info("👆 Upload an image above or try the sample image to get started!")
+        # st.info("👆 Upload an image above or try the sample image to get started!")
         st.markdown("""
         **💡 For best results, use images with:**
         - Good lighting and contrast
@@ -1112,7 +1106,7 @@ if process_image:
     # Resize for processing to improve performance
     processing_image = resize_image_for_processing(image.copy())
 
-    if st.button("🎨 Extract Color Palette", type="primary", help="Analyze your image and extract the dominant colors"):
+    if st.button("🎨 Extract Colour Palette", type="primary", help="Analyze your image and extract the dominant colors"):
         try:
             with st.spinner('🔍 Analyzing image colors...'):
                 progress_bar = st.progress(0)
@@ -1136,7 +1130,7 @@ if process_image:
                     **method_params
                 )
 
-                progress_text.text("🎨 Processing color palette...")
+                progress_text.text("🎨 Processing colour palette...")
                 progress_bar.progress(70)
 
                 # Prepare color output
@@ -1145,7 +1139,7 @@ if process_image:
                 else:  # RGB
                     color_list = [tuple(int(c) for c in color) for color in colors]
 
-                progress_text.text("✅ Color extraction complete!")
+                progress_text.text("✅ Colour extraction complete!")
                 progress_bar.progress(100)
                 time.sleep(0.5)  # Brief pause to show completion
                 progress_bar.empty()
@@ -1182,28 +1176,7 @@ display_color_results()
 # Footer with additional information
 st.markdown("---")
 st.markdown("""
-<div style='text-align: center; color: #666; padding: 20px;'>
-    <p>🎨 <strong>Color Palette Extractor</strong> | Built with Streamlit & scikit-learn</p>
-    <p><small>
-    💡 <strong>Pro Tips:</strong> For brand color extraction, use high-resolution logos with clean backgrounds.
-    For photography, well-lit images with good contrast produce the most accurate palettes.
-    Try different algorithms to see which works best for your specific image type!
-    </small></p>
-    <p><small>
-    <strong>Algorithms:</strong> K-means Clustering • Color Histograms • Median Cut • Hierarchical Clustering • Smart Sampling
-    </small></p>
-    <p><small>
-    <strong>Export Formats:</strong> JSON • CSS Variables • TXT • XML Palette
-    </small></p>
-</div>
-""", unsafe_allow_html=True)
-
-# Version and credits
-st.markdown("---")
-st.markdown("""
-<div style='text-align: center; color: #888; font-size: 12px; padding: 10px;'>
-    <p><strong>Color Palette Extractor</strong></p>
-    <p>Powered by scikit-learn, PIL, and Streamlit</p>
-    <p>Supports multiple extraction algorithms with perceptual color filtering</p>
-</div>
+🎨 Colour palette extractor | Built with Streamlit & scikit-learn
+            
+Designed by: Anya Prosvetova, [anyalitica.dev](https://www.anyalitica.dev/)
 """, unsafe_allow_html=True)
