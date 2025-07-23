@@ -9,7 +9,7 @@ This Streamlit app will help you to extract colour palettes from any image. Desi
 ## Key features
 
 - Extraction & analysis
-    - 7 Extraction algorithms
+    - 7 extraction algorithms
     - Warm/Cool tone detection
 - Customization & filtering
     - Adjustable palette size
@@ -36,19 +36,19 @@ Choose the best algorithm for your image type for optimal results.
 
 | Algorithm | Best For | Speed | Accuracy | Use Case |
 |:---|:---|:---:|:---:|:---|
-| **K-means (Improved)** | Photographs | Medium | High | Best all-rounder for complex images. |
-| **Colour Histogram** | Graphics/Logos | Fast | High | Images with large, distinct colour regions. |
-| **Median Cut** | All image types | Medium | High | Classic algorithm, gives well-balanced results. |
-| **Hierarchical** | Art/Complex Scenes | Slow | Very High | Excellent for analyzing colour harmony. |
-| **Dominant Sampling** | Quick Previews | Very Fast | Medium | Ideal for a fast first look. |
-| **Quantization** | Simple Graphics | Fast | Medium | Memory-efficient and great for simple images. |
+| **K-means (Improved)** | Photographs | Medium | High | Best all-rounder for complex images |
+| **Colour Histogram** | Graphics/Logos | Fast | High | Images with large, distinct colour regions |
+| **Median Cut** | All image types | Medium | High | Classic algorithm, gives well-balanced results |
+| **Hierarchical** | Art/Complex Scenes | Slow | Very High | Excellent for analyzing colour harmony |
+| **Dominant Sampling** | Quick Previews | Very Fast | Medium | Ideal for a fast first look |
+| **Quantization** | Simple Graphics | Fast | Medium | Memory-efficient and great for simple images |
 
 ## Future improvements
 
 Potential features on the roadmap include:
 
 -   **Accessibility checker**: A tool to calculate the contrast ratio between palette colours to ensure they meet standards for web accessibility
--   **Manual colour adjustment**: An option to manually fine-tune an extracted colour using a colour picker before exporting the palette
+<!-- -   **Manual colour adjustment**: An option to manually fine-tune an extracted colour using a colour picker before exporting the palette -->
 -   **Transparent background support**: A feature to correctly handle transparent pixels in PNG images, either by ignoring them or treating them as a background colour
 -   **Advanced colour naming**: Integration with a colour-name library to provide more accurate and standardized names than the current rule-based system
 
@@ -79,6 +79,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-**Created by:** Anya Prosvetova  
+**Created by:** [@anyalitica](https://github.com/anyalitica)
 **Website:** [anyalitica.dev](https://anyalitica.dev)  
-**GitHub:** [@anyalitica](https://github.com/anyalitica)
