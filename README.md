@@ -1,10 +1,10 @@
 # Colour Palette Extractor
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://colour-extractor-app.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://color-extractor-app.streamlit.app/)
 
 This Streamlit app will help you to extract colour palettes from any image. Designed for developers and creatives, it offers several algorithms to extract colour palettes from images in various formats.
 
-![App Screenshot](https://github.com/anyalitica/colour-extractor-app/blob/main/assets/app_screenshot.png)
+![App Screenshot](https://github.com/anyalitica/color-extractor-app/blob/main/assets/app_screenshot.png)
 
 ## Key features
 
@@ -23,7 +23,7 @@ This Streamlit app will help you to extract colour palettes from any image. Desi
 
 ## Live demo & usage
 
-**[Try the live app here](https://colour-extractor-app.streamlit.app/)**
+**[Try the live app here](https://color-extractor-app.streamlit.app/)**
 
 1.  **Upload an image**: Upload your own image or use the provided sample
 2.  **Configure the algorithm**: Adjust the number of colours, choose an extraction algorithm, and set the similarity filter
@@ -57,8 +57,8 @@ To run the app on your local machine:
 
 ```bash
 # Clone the repository
-git clone https://github.com/anyalitica/colour-extractor-app.git
-cd colour-extractor-app/streamlit
+git clone https://github.com/anyalitica/color-extractor-app.git
+cd color-extractor-app/streamlit
 
 # Create and activate a virtual environment (recommended)
 python -m venv venv
