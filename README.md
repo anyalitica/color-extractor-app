@@ -2,28 +2,28 @@
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://colour-extractor-app.streamlit.app/)
 
-This Streamlit app will help you to extract colour palettes from any image. Designed for developers, designers, and creatives, it uses multiple clustering and analysis algorithms to provide accurate and useful colour schemes that can be exported in various formats.
+This Streamlit app will help you to extract colour palettes from any image. Designed for developers and creatives, it offers several algorithms to extract colour palettes from images in various formats.
 
 ![App Screenshot](https://github.com/anyalitica/colour-extractor-app/blob/main/assets/app_screenshot.png)
 
 ## Key features
 
-- Extraction & analysis
+- **Extraction & analysis**
     - 7 extraction algorithms
     - Warm/Cool tone detection
-- Customization & filtering
+- **Customization & filtering**
     - Adjustable palette size
     - Similarity filtering
     - Algorithm-specific tuning
     - HEX & RGB formats
-- Export & integration
+- **Export & integration**
     - CSS variables
     - JSON
     - TXT & XML
 
-## Live Demo & usage
+## Live demo & usage
 
-**[Try the live app here!](https://colour-extractor-app.streamlit.app/)**
+**[Try the live app here](https://colour-extractor-app.streamlit.app/)**
 
 1.  **Upload an image**: Upload your own image or use the provided sample
 2.  **Configure the algorithm**: Adjust the number of colours, choose an extraction algorithm, and set the similarity filter
@@ -34,23 +34,22 @@ This Streamlit app will help you to extract colour palettes from any image. Desi
 
 Choose the best algorithm for your image type for optimal results.
 
-| Algorithm | Best For | Speed | Accuracy | Use Case |
+| Algorithm | Best for | Speed | Result cohesion | Use case |
 |:---|:---|:---:|:---:|:---|
 | **K-means (Improved)** | Photographs | Medium | High | Best all-rounder for complex images |
 | **Colour Histogram** | Graphics/Logos | Fast | High | Images with large, distinct colour regions |
 | **Median Cut** | All image types | Medium | High | Classic algorithm, gives well-balanced results |
-| **Hierarchical** | Art/Complex Scenes | Slow | Very High | Excellent for analyzing colour harmony |
-| **Dominant Sampling** | Quick Previews | Very Fast | Medium | Ideal for a fast first look |
-| **Quantization** | Simple Graphics | Fast | Medium | Memory-efficient and great for simple images |
+| **Hierarchical** | Art/Complex scenes | Slow | Very high | Excellent for analyzing colour harmony |
+| **Dominant Sampling** | Quick previews | Very fast | Medium | Ideal for a fast first look |
+| **Quantization** | Simple graphics | Fast | Medium | Memory-efficient and great for simple images |
 
 ## Future improvements
 
 Potential features on the roadmap include:
 
 -   **Accessibility checker**: A tool to calculate the contrast ratio between palette colours to ensure they meet standards for web accessibility
-<!-- -   **Manual colour adjustment**: An option to manually fine-tune an extracted colour using a colour picker before exporting the palette -->
 -   **Transparent background support**: A feature to correctly handle transparent pixels in PNG images, either by ignoring them or treating them as a background colour
--   **Advanced colour naming**: Integration with a colour-name library to provide more accurate and standardized names than the current rule-based system
+-   **Advanced colour naming**: Integration with a colour-name library to provide more accurate and standardised names than the current rule-based system
 
 ## Local development
 
@@ -61,13 +60,16 @@ To run the app on your local machine:
 git clone https://github.com/anyalitica/colour-extractor-app.git
 cd colour-extractor-app/streamlit
 
-# Install dependencies from requirements.txt
+# Create and activate a virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+# Install dependencies from the requirements file
 pip install -r requirements.txt
 
 # Run the Streamlit app
 streamlit run app.py
 ```
-**Dependencies:** `streamlit`, `numpy`, `Pillow`, `scikit-learn`, `scipy`.
 
 ## Contributing
 
@@ -79,5 +81,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-**Created by:** [@anyalitica](https://github.com/anyalitica)
-**Website:** [anyalitica.dev](https://anyalitica.dev)  
+**Designed by**: Anya Prosvetova, [anyalitica.dev](https://anyalitica.dev)
