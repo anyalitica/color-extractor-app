@@ -2,7 +2,7 @@
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://color-extractor-app.streamlit.app/)
 
-This Streamlit app will help you to extract colour palettes from any image. Designed for developers and creatives, it offers several algorithms to extract colour palettes from images in various formats.
+This Streamlit app will help you to extract colour palettes from any image and save them in various formats.
 
 ![App Screenshot](https://github.com/anyalitica/color-extractor-app/blob/main/assets/app_screenshot.png)
 
