@@ -2,4 +2,4 @@ streamlit
 numpy
 Pillow
 scikit-learn
-opencv-python-headless
+scipy

@@ -9,6 +9,7 @@ import time
 from scipy.spatial.distance import cdist
 from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
 import scipy.cluster.hierarchy as sch
+from skimage.color import rgb2lab
 
 # Configure page
 st.set_page_config(
@@ -92,24 +93,10 @@ def resize_image_for_processing(image, max_size=800):
 
 def rgb_to_lab(rgb):
     """Convert RGB to LAB colour space for better perceptual distance"""
+    # Reshape and normalize
     rgb = np.array(rgb).reshape(-1, 3) / 255.0
-
-    # Convert RGB to XYZ
-    rgb = np.where(rgb > 0.04045, np.power((rgb + 0.055) / 1.055, 2.4), rgb / 12.92)
-    xyz = rgb @ np.array([[0.4124564, 0.3575761, 0.1804375],
-                          [0.2126729, 0.7151522, 0.0721750],
-                          [0.0193339, 0.1191920, 0.9503041]])
-
-    # Convert XYZ to LAB
-    xyz = xyz / np.array([0.95047, 1.00000, 1.08883])
-    xyz = np.where(xyz > 0.008856, np.power(xyz, 1/3), (7.787 * xyz + 16/116))
-
-    lab = np.zeros_like(xyz)
-    lab[:, 0] = 116 * xyz[:, 1] - 16  # L
-    lab[:, 1] = 500 * (xyz[:, 0] - xyz[:, 1])  # A
-    lab[:, 2] = 200 * (xyz[:, 1] - xyz[:, 2])  # B
-
-    return lab.reshape(-1, 3)
+    # Use the optimized scikit-image function
+    return rgb2lab(rgb)
 
 def calculate_color_distance(color1, color2, method='lab'):
     """Calculate perceptual distance between two colors"""
