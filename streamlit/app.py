@@ -9,6 +9,7 @@ import time
 from scipy.spatial.distance import cdist
 from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
 import scipy.cluster.hierarchy as sch
+from skimage import data
 from skimage.color import rgb2lab
 
 # Configure page
@@ -591,7 +592,7 @@ def display_color_results():
         col_export1, col_export2, col_export3, col_export4 = st.columns(4)
 
         with col_export1:
-            st.markdown("**📄 JSON Data**")
+            st.markdown("**JSON Data**")
             st.markdown("*Complete extraction info*")
             try:
                 # Convert colors to native Python types for JSON serialization
@@ -622,7 +623,7 @@ def display_color_results():
 
                 json_data = json.dumps(palette_data, indent=2)
                 st.download_button(
-                    label="📄 Download JSON",
+                    label="Download JSON",
                     data=json_data,
                     file_name=f"color_palette_{int(time.time())}.json",
                     mime="application/json",
@@ -633,7 +634,7 @@ def display_color_results():
                 st.error(f"Error creating JSON: {str(e)}")
 
         with col_export2:
-            st.markdown("**🎨 CSS Variables**")
+            st.markdown("**CSS Variables**")
             st.markdown("*Ready for web development*")
             try:
                 # Generate CSS variables
@@ -647,7 +648,7 @@ def display_color_results():
                 css_content = f':root {{\n{chr(10).join(css_vars)}\n}}\n\n/* Usage examples */\n.primary {{ color: var(--color-1); }}\n.secondary {{ background-color: var(--color-2); }}'
 
                 st.download_button(
-                    label="🎨 Download CSS",
+                    label="Download CSS",
                     data=css_content,
                     file_name=f"palette_{int(time.time())}.css",
                     mime="text/css",
@@ -659,7 +660,7 @@ def display_color_results():
                 st.error(f"Error creating CSS: {str(e)}")
 
         with col_export3:
-            st.markdown("**📄 TXT File**")
+            st.markdown("**TXT File**")
             st.markdown("*Simple text format*")
             try:
                 # Generate TXT content
@@ -679,7 +680,7 @@ def display_color_results():
                 txt_content = '\n'.join(txt_lines)
 
                 st.download_button(
-                    label="📄 Download TXT",
+                    label="Download TXT",
                     data=txt_content,
                     file_name=f"palette_{int(time.time())}.txt",
                     mime="text/plain",
@@ -691,7 +692,7 @@ def display_color_results():
                 st.error(f"Error creating TXT: {str(e)}")
 
         with col_export4:
-            st.markdown("**🗃️ XML Palette**")
+            st.markdown("**XML Palette**")
             st.markdown("*Structured with colour names*")
             try:
                 # Generate XML content
@@ -707,7 +708,7 @@ def display_color_results():
                 xml_content = '\n'.join(xml_lines)
 
                 st.download_button(
-                    label="🗃️ Download XML",
+                    label="Download XML",
                     data=xml_content,
                     file_name=f"palette_{int(time.time())}.xml",
                     mime="application/xml",
@@ -720,22 +721,22 @@ def display_color_results():
 
         # Clear results button
         st.markdown("---")
-        col_clear1, col_clear2, col_clear3 = st.columns([1, 1, 1])
+        # col_clear1, col_clear2, col_clear3 = st.columns([1, 1, 1])
 
-        with col_clear2:
-            if st.button("🗑️ Clear Results", help="Clear extracted colors to start fresh"):
-                # Clear all extraction-related session state
-                keys_to_clear = [
-                    'extracted_colors', 'color_list', 'output_format',
-                    'extraction_method', 'requested_colors', 'min_distance',
-                    'method_params', 'image_info', 'extraction_time'
-                ]
+        # with col_clear1:
+        if st.button("🗑️ Clear Results", help="Clear extracted colors to start fresh"):
+            # Clear all extraction-related session state
+            keys_to_clear = [
+                'extracted_colors', 'color_list', 'output_format',
+                'extraction_method', 'requested_colors', 'min_distance',
+                'method_params', 'image_info', 'extraction_time'
+            ]
 
-                for key in keys_to_clear:
-                    if key in st.session_state:
-                        del st.session_state[key]
+            for key in keys_to_clear:
+                if key in st.session_state:
+                    del st.session_state[key]
 
-                st.rerun()
+            st.rerun()
 
 # Main UI
 st.markdown('<h1 class="main-header">🎨 Colour Palette Extractor</h1>', unsafe_allow_html=True)
@@ -1028,11 +1029,11 @@ with col1:
     # Handle sample image
     if st.session_state.get('use_sample', False) and uploaded_file is None:
         image = create_sample_image()
-        st.image(image, caption='🌈 Sample Test Image - Perfect for Algorithm Testing!', use_container_width=True)
+        st.image(image, caption='🌈 Sample Test Image - Perfect for algorithm testing', use_container_width=True)
         st.markdown("""
         <div class="help-box">
         This test image contains gradients and distinct colour regions.
-        Perfect for comparing different extraction algorithms and settings!
+        Perfect for comparing different extraction algorithms and settings.
         </div>
         """, unsafe_allow_html=True)
         process_image = True
