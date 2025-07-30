@@ -161,3 +161,4 @@ cython_debug/
 
 tkinter_app/
 color_extractor_env/
+.DS_Store
